@@ -72,7 +72,7 @@ jobs:
           --build-arg SHARED_DIR_FULL_PATH=$SHARED_DIR_FULL_PATH \
           --build-arg FT_UID=$FT_UID \
           --build-arg FT_SECRET_UID=$FT_SECRET_UID \
-          --build-arg SECRET=$SECRET \          
+          --build-arg SECRET=$SECRET \
           .
 
       - name: Tag Docker image
