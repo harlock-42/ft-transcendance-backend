@@ -59,7 +59,7 @@ export class AuthService
           client_id: process.env.FT_UID,
           client_secret: process.env.FT_SECRET_UID,
           code: codeData,
-          redirect_uri: "http://localhost:3001/callback"
+          redirect_uri: `${process.env.FRONTEND_URL}/callback`
         }
       });
       return data;

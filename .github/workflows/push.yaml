@@ -46,6 +46,7 @@ jobs:
         env:
           HOSTNAME: ${{ vars.HOSTNAME }}
           PORT: ${{ vars.PORT }}
+          FRONTEND_URL: ${{ vars.FRONTEND_URL }}
           DB_TYPE: ${{ vars.DB_TYPE }}
           DB_HOST: ${{ vars.DB_HOST }}
           POSTGRES_PORT: ${{ vars.POSTGRES_PORT }}
@@ -62,6 +63,7 @@ jobs:
         run: |
           docker build -t $DOCKER_USERNAME/$K3S_NAMESPACE-$K3S_DEPLOYMENT_NAME:latest \
           --build-arg HOSTNAME=$HOSTNAME \
+          --build-arg FRONTEND_URL=$FRONTEND_URL \
           --build-arg DB_TYPE=$DB_TYPE \
           --build-arg DB_HOST=$DB_HOST \
           --build-arg POSTGRES_PORT=$POSTGRES_PORT \

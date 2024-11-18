@@ -31,6 +31,7 @@ services:
         FT_UID: ${FT_UID}
         FT_SECRET_UID: ${FT_SECRET_UID}
         SECRET: ${SECRET}
+        FRONTEND_URL: ${FRONTEND_URL}
     depends_on:
       - "postgres"
     ports:

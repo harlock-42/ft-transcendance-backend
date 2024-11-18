@@ -12,7 +12,7 @@ import { ChallengeGameInfo, MMQueryGameInfo } from './lib/ClassesForWebsocket';
 
 @WebSocketGateway(8080, {
   cors: {
-    origin: 'http://localhost:3001',
+    origin: ['http://localhost:3001', "https://trans.harlock.fr"],
   },
 })
 export class GameGateway

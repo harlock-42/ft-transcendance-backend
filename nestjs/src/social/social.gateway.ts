@@ -28,7 +28,7 @@ import { Responses } from "./lib/Responses";
 
 @WebSocketGateway(8100, {
     cors: {
-        origin: "http://localhost:3001"
+        origin: ["http://localhost:3001", "https://trans.harlock.fr"]
     },
     maxHttpBufferSize: 5*1e6
 })
