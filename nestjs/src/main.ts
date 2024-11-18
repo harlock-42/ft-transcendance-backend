@@ -26,7 +26,7 @@ async function bootstrap() {
     initDbData(app);
 
     app.enableCors({
-        origin: "http://localhost:3001",
+        origin: ["http://localhost:3001", "https://trans.harlock.fr"],
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
         credentials: true
     });
