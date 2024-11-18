@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15.2-alpine3.17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    networks:
+      - transnet
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: .
+      args:
+        HOSTNAME: ${HOSTNAME}
+        DB_TYPE: ${DB_TYPE}
+        DB_HOST: ${DB_HOST}
+        POSTGRES_PORT: ${POSTGRES_PORT}
+        POSTGRES_USER: ${POSTGRES_USER}
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        POSTGRES_DB: ${POSTGRES_DB}
+        PORT: ${PORT}
+        SHARED_DIR_FULL_PATH: ${SHARED_DIR_FULL_PATH}
+        FT_UID: ${FT_UID}
+        FT_SECRET_UID: ${FT_SECRET_UID}
+        SECRET: ${SECRET}
+    depends_on:
+      - "postgres"
+    ports:
+      - "3000:3000"
+      - "8080:8080"
+      - "8100:8100"
+    networks:
+      - transnet
+    volumes:
+      - backend_data:/server/uploads/
+
+networks:
+  transnet:
+    external: true
+
+volumes:
+  db_data:
+  backend_data:
